@@ -7,11 +7,14 @@ function createRows(){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $query = "INSERT INTO users(username,password) VALUES ('$username','$password')";
+    $username = mysqli_real_escape_string($connection,$username);
+    $password = mysqli_real_escape_string($connection,$password);
+
+    $query =  "INSERT INTO users (username,password) VALUES ('$username','$password')";
 
     $result = mysqli_query($connection, $query);
     if(!$result){
-        die('Query failed ' . mysqli_error());
+        die('Query failed ');
     }else{
         echo "Registered";
     }
