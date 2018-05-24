@@ -1,3 +1,11 @@
+
+<?php
+
+    include 'db.php';
+    include 'functions.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +28,13 @@
             </div>
 
             <div class="form-group">
-                <select name="" id="">
-                    <option value="">1</option>
+                <select name="id" id="">
+                    <?php
+                        showAllData();
+                    ?>
                 </select>
             </div>
-            <input type="submit" class="btn btn-primary" name="submit" value="Update">
+            <input type="submit" class="btn btn-primary" name="submit" value="UPDATE">
         </form>
     </div>
 </div>
