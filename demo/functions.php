@@ -6,5 +6,14 @@
 </head>
 <body>
 
+<?php
+
+function say_Something(){
+
+}
+
+?>
+
+
 </body>
 </html>
