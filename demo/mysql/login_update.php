@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-
 <div class="container">
     <div class="col-xs-6">
         <form action="login_create.php" method="POST">
@@ -22,10 +19,14 @@
                 <input type="password" name="password" class="form-control">
             </div>
 
-            <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+            <div class="form-group">
+                <select name="" id="">
+                    <option value="">1</option>
+                </select>
+            </div>
+            <input type="submit" class="btn btn-primary" name="submit" value="Update">
         </form>
     </div>
 </div>
 
 </body>
-</html>
