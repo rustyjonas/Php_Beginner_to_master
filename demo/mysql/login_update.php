@@ -4,6 +4,14 @@
     include 'db.php';
     include 'functions.php';
 
+    if(isset($_POST['submit'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $id = $_POST['id'];
+
+        updateData($username,$password,$id);
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +24,7 @@
 <body>
 <div class="container">
     <div class="col-xs-6">
-        <form action="login_create.php" method="POST">
+        <form action="" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="form-control">
@@ -28,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                <select name="id" id="">
+                <select name="id" id="" class="form-control">
                     <?php
                         showAllData();
                     ?>
