@@ -10,7 +10,8 @@
 <body>
 
 <div class="container">
-    <div class="col-xs-6">
+    <div class="col-SM-6">
+        <h1 class="text-center"></h1>
         <form action="login_create.php" method="POST">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -22,7 +23,7 @@
                 <input type="password" name="password" class="form-control">
             </div>
 
-            <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+            <input type="submit" class="btn btn-primary" name="submit" value="CREATE">
         </form>
     </div>
 </div>

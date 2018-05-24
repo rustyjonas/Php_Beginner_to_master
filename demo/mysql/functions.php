@@ -2,6 +2,21 @@
 
 include 'db.php';
 
+function createRows(){
+    global $connection;
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $query = "INSERT INTO users(username,password) VALUES ('$username','$password')";
+
+    $result = mysqli_query($connection, $query);
+    if(!$result){
+        die('Query failed ' . mysqli_error());
+    }else{
+        echo "Registered";
+    }
+}
+
 function showAllData(){
     global $connection;
     $query = "SELECT * FROM users";
@@ -27,6 +42,8 @@ function updateTable(){
 
     if(!$result){
         die("QUERY FAILED" . mysqli_error());
+    }else{
+        echo "Updated";
     }
 }
 
@@ -39,5 +56,7 @@ function deleteRowS(){
 
     if(!$result){
         die("QUERY FAILED" . mysqli_error());
+    }else{
+        echo "Deleted";
     }
 }
