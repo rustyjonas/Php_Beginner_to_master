@@ -1,22 +1,11 @@
 
 <?php
-
-    include 'db.php';
     include 'functions.php';
+    updateTable();
 
-    if(isset($_POST['submit'])){
-        updateTable();
-    }
+    include "includes/header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-<body>
 <div class="container">
     <div class="col-xs-6">
         <h1 class="text-center">Update</h1>
@@ -42,5 +31,4 @@
         </form>
     </div>
 </div>
-
-</body>
+<?php include "includes/footer.php";?>
