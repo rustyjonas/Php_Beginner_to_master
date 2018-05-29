@@ -24,12 +24,15 @@ class Car {
 
 
 $bmw = new Car();
-$truck = new Car();
 
-echo $bmw->wheels . "<br>";
+class Plane extends Car {
 
-echo $truck->wheels = 10 . "<br>";
+    var $wheels = 20;
 
-$truck->CreateDoors();
-echo $truck->doors;
+}
+
+$jet = new Plane();
+echo $jet->wheels;
+
+
 
