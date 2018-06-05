@@ -4,6 +4,7 @@
 
 <?php ob_start(); ?>
 
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,3 +35,14 @@
 </head>
 
 <body>
+
+<!---->
+<?php
+//
+//if(isset($_SESSION['user_role'])){
+//
+//} else {
+//    header("location: ../index.php");
+//}
+//
+//?>
