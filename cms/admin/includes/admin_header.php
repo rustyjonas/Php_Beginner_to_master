@@ -7,13 +7,13 @@
 
 
 <?php
-
-if(isset($_SESSION['user_role'])){
-
-
-} else {
-
-    header("localtion: ../index.php");
-}
-
-?>
+//
+//if(isset($_SESSION['user_role'])){
+//
+//
+//} else {
+//
+//    header("location: ../index.php");
+//}
+//
+//?>
