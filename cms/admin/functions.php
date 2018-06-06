@@ -1,6 +1,6 @@
 <?php
 
-function confirm($result){
+function confirmQuery($result){
     global $connection;
 
     if(!$result){
@@ -22,7 +22,7 @@ function insert_categories(){
 
             $create_category_query = mysqli_query($connection,$query);
 
-            confirm($create_category_query);
+            confirmQuery($create_category_query);
         }
     }
 }

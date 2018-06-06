@@ -25,15 +25,11 @@
 
         $add_post_query = mysqli_query($connection,$query);
 
-        if(!$add_post_query){
-
-            die("QUERY FAILED: " . mysqli_error($connection));
-
-        }
+        confirmQuery($add_post_query);
     }
 ?>
 
-<form action="" method="POST" enctype="multipart/form-data">
+<form style="padding-top:8em;" action="" method="POST" enctype="multipart/form-data">
 
     <div class="form-group">
         <label for="title">Post Title</label>
