@@ -1,5 +1,13 @@
 <?php
 
+function confirm($result){
+    global $connection;
+
+    if(!$result){
+        die('QUERY FAILED' . mysqli_error($connection));
+    }
+}
+
 function insert_categories(){
     global $connection;
 
@@ -14,9 +22,7 @@ function insert_categories(){
 
             $create_category_query = mysqli_query($connection,$query);
 
-            if(!$create_category_query){
-                die('QUERY FAILED' . mysqli_error($connection));
-            }
+            confirm($create_category_query);
         }
     }
 }
