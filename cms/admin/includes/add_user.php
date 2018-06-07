@@ -1,7 +1,7 @@
 <?php include "../includes/db.php";?>
 
 <?php
-if(isset($_POST['create_post'])){
+if(isset($_POST['create_user'])){
 
     $post_title = $_POST['title'];
     $post_author = $_POST['author'];
@@ -28,61 +28,57 @@ if(isset($_POST['create_post'])){
 }
 ?>
 
-<form style="padding-top:8em;" action="" method="POST" enctype="multipart/form-data">
+<form action="" method="POST" enctype="multipart/form-data">
 
     <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" class="form-control" name="title">
+        <label for="user_firstname">Firstname</label>
+        <input type="text" class="form-control" name="user_firstname">
     </div>
 
+    <div class="form-group">
+        <label for="user_lastname">Lastname</label>
+        <input type="text" class="form-control" name="user_lastname">
+    </div>
 
     <div class="form-group">
-        <select name="post_category" id="post_category">
+        <select name="user_role" id="">
             <?php
-            $query = "SELECT * FROM categories";
-            $select_categories= mysqli_query($connection,$query);
+            $query = "SELECT * FROM users";
+            $select_users = mysqli_query($connection,$query);
 
-            confirmQuery($select_categories);
+            confirmQuery($select_users);
 
-            while($row = mysqli_fetch_assoc($select_categories)) {
-                $cat_id = $row['cat_id'];
-                $cat_title = $row['cat_title'];
+            while($row = mysqli_fetch_assoc($select_users)){
+                $user_id = $row['user_id'];
+                $user_role = $row['user_role'];
 
-                echo "<option value='{$cat_id}'>{$cat_title}</option>";
-
+                echo "<option value='$user_id'>{$user_role}</option>";
             }
             ?>
+
         </select>
+
     </div>
-
-
     <div class="form-group">
-        <label for="title">Post Author</label>
-        <input type="text" name="author" class="form-control">
-    </div>
-
-    <div class="form-group">
-        <label for="post_tags">Post Tags</label>
-        <input type="text" name="post_tags" class="form-control">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username">
     </div>
 
     <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" name="post_status" class="form-control">
+        <label for="user_email">Email</label>
+        <input type="text" class="form-control" name="user_email">
     </div>
 
     <div class="form-group">
-        <label for="post_image">Post Image</label>
-        <input type="file" name="image">
+        <label for="user_password">Password</label>
+        <input type="password" class="form-control" name="user_password">
     </div>
 
-    <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea name="post_content" class="form-control" id="" cols="30" rows="10"></textarea>
-    </div>
+
+
 
     <div class="form-group">
-        <input type="submit" name="create_post" class="btn btn-primary" value="Publish Post">
+        <input type="submit" name="create_user" class="btn btn-primary" value="Add User">
     </div>
 
 
