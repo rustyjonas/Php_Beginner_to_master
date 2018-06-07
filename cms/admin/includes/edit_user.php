@@ -36,13 +36,13 @@ if(isset($_POST['edit_user'])){
 
 //    move_uploaded_file($post_image_temp, "image/$post_image");
 
-    $query = "INSERT INTO users(user_firstname, user_lastname, user_role, 
-              username, user_email, user_password) VALUES ('{$user_firstname}','{$user_lastname}',
-              '{$user_role}','{$username}','{$user_email}','{$user_password}')";
+    $query = "UPDATE users SET user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}',
+                  user_role = '{$user_role}', username = '{$username}', user_email = '{$user_email}',
+                  user_password= '{$user_password}' WHERE user_id = '{$user_id}'";
 
-    $create_user_query = mysqli_query($connection,$query);
+    $update_user_query = mysqli_query($connection,$query);
 
-    confirmQuery($create_user_query);
+    confirmQuery($update_user_query);
 }
 ?>
 
@@ -67,12 +67,9 @@ if(isset($_POST['edit_user'])){
                     echo "<option value='Subscriber'>Subscriber</option>";
                 } else {
                     echo "<option value='Admin'>Admin</option>";
-
                 }
             ?>
 
-            <!--            <option value="Admin">Admin</option>-->
-<!--            <option value="Subscriber">Subscriber</option>-->
         </select>
     </div>
 
