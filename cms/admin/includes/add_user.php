@@ -16,13 +16,13 @@ if(isset($_POST['create_user'])){
 
 //    move_uploaded_file($post_image_temp, "image/$post_image");
 
-//    $query = "INSERT INTO posts (post_category_id, post_title, post_author, post_date, post_image,
-//                post_content, post_tags, post_status) VALUES ({$post_category_id},'{$post_title}','{$post_author}',now(),
-//              '{$post_image}','{$post_content}','{$post_tags}','{$post_status}')";
-//
-//    $add_post_query = mysqli_query($connection,$query);
-//
-//    confirmQuery($add_post_query);
+    $query = "INSERT INTO users(user_firstname, user_lastname, user_role, 
+              username, user_email, user_password) VALUES ('{$user_firstname}','{$user_lastname}',
+              '{$user_role}','{$username}','{$user_email}','{$user_password}')";
+
+    $create_user_query = mysqli_query($connection,$query);
+
+    confirmQuery($create_user_query);
 }
 ?>
 
@@ -45,6 +45,10 @@ if(isset($_POST['create_user'])){
             <option value="Subscriber">Subscriber</option>
 
         </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="user_image"></label>
     </div>
 
     <div class="form-group">
