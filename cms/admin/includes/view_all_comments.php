@@ -21,6 +21,7 @@
                             <th>Date</th>
                             <th>Approve</th>
                             <th>Unapprove</th>
+                            <th>Edit</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -44,7 +45,6 @@
                         echo "<tr>";
                         echo "<td>$comment_id</td>";
                         echo "<td>$comment_author</td>";
-                        echo "<td>$comment_author</td>";
                         echo "<td>$comment_content</td>";
 //
 //                        $query = "SELECT * FROM categories WHERE cat_id = {$post_category_id}";
@@ -56,12 +56,14 @@
 //                            $cat_title = $row['cat_title'];
 //                            echo "<td>{$cat_title}</td>";
 //                        }
+                        echo "<td>$comment_email</td>";
                         echo "<td>$comment_status</td>";
+                        echo "<td>Some Title</td>";
                         echo "<td>$comment_date</td>";
-                        echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Approve</a></td>";
-                        echo "<td><a href='posts.php?delete={$post_id}'>Unapprove</a></td>";
-                        echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
-                        echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
+                        echo "<td><a href='posts.php?source=edit_post&p_id='>Approve</a></td>";
+                        echo "<td><a href='posts.php?delete='>Unapprove</a></td>";
+                        echo "<td><a href='posts.php?source=edit_post&p_id='>Edit</a></td>";
+                        echo "<td><a href='posts.php?delete='>Delete</a></td>";
                         echo "</tr>";
                     }
                     ?>
