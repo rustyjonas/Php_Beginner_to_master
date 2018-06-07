@@ -60,9 +60,19 @@ if(isset($_POST['edit_user'])){
 
     <div class="form-group">
         <select name="user_role" id="">
-            <option value="Subscriber">Select Options</option>
-            <option value="Admin">Admin</option>
-            <option value="Subscriber">Subscriber</option>
+            <?php
+                 echo "<option value='$user_role'>$user_role</option>";
+
+                if($user_role == 'Admin'){
+                    echo "<option value='Subscriber'>Subscriber</option>";
+                } else {
+                    echo "<option value='Admin'>Admin</option>";
+
+                }
+            ?>
+
+            <!--            <option value="Admin">Admin</option>-->
+<!--            <option value="Subscriber">Subscriber</option>-->
         </select>
     </div>
 
@@ -88,10 +98,6 @@ if(isset($_POST['edit_user'])){
     <div class="form-group">
         <input type="submit" name="edit_user" class="btn btn-primary" value="Edit User">
     </div>
-
-
-
-
 
 </form>
 
