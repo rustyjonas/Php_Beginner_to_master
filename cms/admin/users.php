@@ -1,37 +1,57 @@
 
 <?php include "includes/admin_header.php";?>
 
+<div id="wrapper">
 
-<?php include "includes/admin_navigation.php"; ?>
+    <!-- Navigation -->
+    <?php include "includes/admin_navigation.php"; ?>
+   <div class="container-fluid">
 
-<?php
-if(isset($_GET['source'])){
+       <!-- Page Heading -->
+       <div class="row">
+           <div class="col-lg-12">
 
-    $source = $_GET['source'];
+               <h1 class="page-header">
+                   Welcome to admin
+                   <small>Author</small>
+               </h1>
 
-} else {
-    $source = '';
-}
 
-switch($source){
+               <?php
+               if(isset($_GET['source'])){
 
-    case 'add_user':
-        include "includes/add_user.php";
-        break;
+                   $source = $_GET['source'];
 
-    case 'edit_user':
-        include "includes/edit_user.php";
-        break;
+               } else {
+                   $source = '';
+               }
 
-    case '200':
-        echo "NICE 200";
-        break;
+               switch($source){
 
-    default:
-        include "includes/view_all_users.php";
-        break;
-}
-?>
+                   case 'add_user':
+                       include "includes/add_user.php";
+                       break;
+
+                   case 'edit_user':
+                       include "includes/edit_user.php";
+                       break;
+
+                   case '200':
+                       echo "NICE 200";
+                       break;
+
+                   default:
+                       include "includes/view_all_users.php";
+                       break;
+               }
+               ?>
+           </div>
+       </div>
+   </div>
+
+</div>
+
+
 
 <!-- /.row -->
 
