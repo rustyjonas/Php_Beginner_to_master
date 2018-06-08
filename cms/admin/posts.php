@@ -1,9 +1,15 @@
 
 <?php include "includes/admin_header.php";?>
 
+<div id="wrapper">
 
+    <!-- Navigation -->
 <?php include "includes/admin_navigation.php"; ?>
+    <div class="container-fluid">
 
+        <!-- Page Heading -->
+        <div class="row">
+            <div class="col-lg-12">
                         <?php
                         if(isset($_GET['source'])){
 
@@ -32,17 +38,17 @@
                                 break;
                         }
                         ?>
+</div>
+</div>
+<!-- /.row -->
 
-            <!-- /.row -->
+</div>
+<!-- /.container-fluid -->
 
-    </div>
-        <!-- /.container-fluid -->
+</div>
 
-
-
-
-
-    <!-- /#page-wrapper -->
+<!-- /#page-wrapper -->
 
 
-    <?php include "includes/admin_footer.php";?>
+
+<?php include "includes/admin_footer.php";?>

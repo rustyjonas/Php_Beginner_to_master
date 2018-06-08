@@ -156,8 +156,6 @@ if(isset($_POST['edit_user'])){
 
     </div>
 
-
-
     <!-- /#page-wrapper -->
 
 

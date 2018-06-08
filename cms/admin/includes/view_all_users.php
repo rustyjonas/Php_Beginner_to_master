@@ -1,4 +1,4 @@
-<div id="page-wrapper" style="padding-top:3em;">
+<div id="page-wrapper">
     <div class="container-fluid">
 
         <!-- Page Heading -->
@@ -114,4 +114,11 @@
                 ?>
             </div>
         </div>
+        <!-- /.row -->
+
     </div>
+    <!-- /.container-fluid -->
+
+</div>
+
+<!-- /#page-wrapper -->
