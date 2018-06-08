@@ -11,7 +11,6 @@
         $select_user_profile_query = mysqli_query($connection,$query);
 
         while($row = mysqli_fetch_array($select_user_profile_query)) {
-
             $user_id = $row['user_id'];
             $username = $row['username'];
             $user_password = $row['user_password'];
@@ -25,6 +24,56 @@
     }
 
 ?>
+
+
+<?php
+if(isset($_GET['edit_user'])) {
+
+    $the_user_id = $_GET['edit_user'];
+
+    $query = "SELECT * FROM users WHERE user_id = $the_user_id";
+    $select_users_query = mysqli_query($connection, $query);
+
+    while ($row = mysqli_fetch_assoc($select_users_query)) {
+        $user_id = $row['user_id'];
+        $username = $row['username'];
+        $user_password = $row['user_password'];
+        $user_firstname = $row['user_firstname'];
+        $user_lastname = $row['user_lastname'];
+        $user_email = $row['user_email'];
+        $user_image = $row['user_image'];
+        $user_role = $row['user_role'];
+        $randSalt = $row['randSalt'];
+
+    }
+}
+
+if(isset($_POST['edit_user'])){
+    $user_firstname = $_POST['user_firstname'];
+    $user_lastname = $_POST['user_lastname'];
+    $user_role = $_POST['user_role'];
+
+//    $post_image = $_FILES['image']['name'];
+//    $post_image_temp = $_FILES['image']['tmp_name'];
+
+    $username = $_POST['username'];
+    $user_email = $_POST['user_email'];
+    $user_password = $_POST['user_password'];
+
+//    move_uploaded_file($post_image_temp, "image/$post_image");
+
+    $query = "UPDATE users SET user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}',
+                  user_role = '{$user_role}', username = '{$username}', user_email = '{$user_email}',
+                  user_password= '{$user_password}' WHERE username = '{$username}'";
+
+    $update_user_query = mysqli_query($connection,$query);
+
+    confirmQuery($update_user_query);
+}
+
+
+?>
+
 <div id="wrapper">
 
 
