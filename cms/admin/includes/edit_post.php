@@ -51,6 +51,8 @@ while($row = mysqli_fetch_assoc($select_posts_by_id)) {
 
         confirmQuery($update_post);
 
+        echo "<p class='bg-success'>Post Update. <a href='../post.php?p_id={$p_id}'> View Post </a> or <a href='posts.php'> Edit More Posts </a>  </p>";
+
     }
 
 ?>
