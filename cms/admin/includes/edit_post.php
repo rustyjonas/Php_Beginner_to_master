@@ -55,62 +55,75 @@ while($row = mysqli_fetch_assoc($select_posts_by_id)) {
 
 ?>
 
-<form style="padding-top: 7em;" action="" method="POST" enctype="multipart/form-data">
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Welcome To Admin
+                    <Small>Author</Small>
+                </h1>
 
-    <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" class="form-control" value="<?php echo $post_title; ?>" name="post_title">
-    </div>
+                <form action="" method="POST" enctype="multipart/form-data">
 
-    <div class="form-group">
-        <select name="post_category" id="post_category">
-            <?php
-            $query = "SELECT * FROM categories";
-            $select_categories= mysqli_query($connection,$query);
+                    <div class="form-group">
+                        <label for="title">Post Title</label>
+                        <input type="text" class="form-control" value="<?php echo $post_title; ?>" name="post_title">
+                    </div>
 
-            confirmQuery($select_categories);
+                    <div class="form-group">
+                        <select name="post_category" id="post_category">
+                            <?php
+                            $query = "SELECT * FROM categories";
+                            $select_categories= mysqli_query($connection,$query);
 
-            while($row = mysqli_fetch_assoc($select_categories)) {
-                $cat_id = $row['cat_id'];
-                $cat_title = $row['cat_title'];
+                            confirmQuery($select_categories);
 
-                echo "<option value='{$cat_id}'>{$cat_title}</option>";
+                            while($row = mysqli_fetch_assoc($select_categories)) {
+                                $cat_id = $row['cat_id'];
+                                $cat_title = $row['cat_title'];
 
-            }
-            ?>
-        </select>
-    </div>
+                                echo "<option value='{$cat_id}'>{$cat_title}</option>";
+
+                            }
+                            ?>
+                        </select>
+                    </div>
 
 
-    <div class="form-group">
-        <label for="title">Post Author</label>
-        <input type="text" name="post_author" value="<?php echo $post_author; ?>" class="form-control">
-    </div>
+                    <div class="form-group">
+                        <label for="title">Post Author</label>
+                        <input type="text" name="post_author" value="<?php echo $post_author; ?>" class="form-control">
+                    </div>
 
-    <div class="form-group">
-        <label for="post_tags">Post Tags</label>
-        <input type="text" name="post_tags" value="<?php echo $post_tags; ?>" class="form-control">
-    </div>
+                    <div class="form-group">
+                        <label for="post_tags">Post Tags</label>
+                        <input type="text" name="post_tags" value="<?php echo $post_tags; ?>" class="form-control">
+                    </div>
 
-    <div class="form-group">
-        <label for="post_status">Post Status</label>
-        <input type="text" value="<?php echo $post_status ?>" name="post_status" class="form-control">
-    </div>
+                    <div class="form-group">
+                        <label for="post_status">Post Status</label>
+                        <input type="text" value="<?php echo $post_status ?>" name="post_status" class="form-control">
+                    </div>
 
-    <div class="form-group">
-        <img width="100" src="image/<?php echo$post_image;?>" alt="">
-        <input type="file" name="image">
-    </div>
+                    <div class="form-group">
+                        <img width="100" src="image/<?php echo$post_image;?>" alt="">
+                        <input type="file" name="image">
+                    </div>
 
-    <div class="form-group">
-        <label for="post_content">Post Content</label>
-        <textarea name="post_content" class="form-control" id="" cols="30" rows="10">
+                    <div class="form-group">
+                        <label for="post_content">Post Content</label>
+                        <textarea name="post_content" class="form-control" id="" cols="30" rows="10">
             <?php echo $post_content; ?>
         </textarea>
-    </div>
+                    </div>
 
-    <div class="form-group">
-        <input type="submit" name="update_post" class="btn btn-primary" value="Update Post">
-    </div>
+                    <div class="form-group">
+                        <input type="submit" name="update_post" class="btn btn-primary" value="Update Post">
+                    </div>
 
-</form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
