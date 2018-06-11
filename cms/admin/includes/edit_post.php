@@ -97,13 +97,29 @@ while($row = mysqli_fetch_assoc($select_posts_by_id)) {
                     </div>
 
                     <div class="form-group">
-                        <label for="post_tags">Post Tags</label>
-                        <input type="text" name="post_tags" value="<?php echo $post_tags; ?>" class="form-control">
+                        <select name="post_status" id="">
+
+                            <option value="<?php echo $post_status;?>"><?php echo $post_status; ?></option>
+
+                            <?php
+                            if($post_status = 'Published'){
+
+                                echo "<option value='Draft'>Draft</option>";
+
+                            } else {
+
+                                echo "<option value='Published'>Publish</option>";
+
+                            }
+
+                            ?>
+                        </select>
                     </div>
 
+
                     <div class="form-group">
-                        <label for="post_status">Post Status</label>
-                        <input type="text" value="<?php echo $post_status ?>" name="post_status" class="form-control">
+                        <label for="post_tags">Post Tags</label>
+                        <input type="text" name="post_tags" value="<?php echo $post_tags; ?>" class="form-control">
                     </div>
 
                     <div class="form-group">
