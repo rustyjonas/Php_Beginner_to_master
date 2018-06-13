@@ -36,9 +36,20 @@ if(isset($_POST['edit_user'])){
 
 //    move_uploaded_file($post_image_temp, "image/$post_image");
 
+    $query = "SELECT randSalt FROM users";
+    $select_randsalt_query = mysqli_query($connection, $query);
+    if(!$select_randsalt_query) {
+        die("Query Failed" . mysqli_error($connection));
+    }
+    $row = mysqli_fetch_array($select_randsalt_query);
+    $salt = $row['randSalt'];
+    $hashed_password = crypt($user_password, $salt);
+
+
+
     $query = "UPDATE users SET user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}',
                   user_role = '{$user_role}', username = '{$username}', user_email = '{$user_email}',
-                  user_password= '{$user_password}' WHERE user_id = '{$user_id}'";
+                  user_password= '{$hashed_password}' WHERE user_id = '{$user_id}'";
 
     $update_user_query = mysqli_query($connection,$query);
 
