@@ -25,6 +25,8 @@ if(isset($_POST['submit'])){
 
         $salt = $row['randSalt'];
 
+        $password = crypt($password, $salt);
+
         $query = "INSERT INTO users (username, user_password, user_email, user_role) VALUES ('{$username}','{$password}','{$email}','Subscriber')";
         $register_user_query = mysqli_query($connection,$query);
         if(!$register_user_query) {
@@ -37,6 +39,8 @@ if(isset($_POST['submit'])){
 
         $message = "Fields cannot be empty";
     }
+} else{
+    $message = '';
 }
 
 
