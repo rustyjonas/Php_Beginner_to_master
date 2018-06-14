@@ -19,7 +19,11 @@
             <?php
 
 
-                $query = "SELECT * FROM posts WHERE post_status = 'Published'";
+                $post_query_count = "SELECT * FROM posts";
+                $find_count = mysqli_query($connection,$post_query_count);
+                $count = mysqli_num_rows($find_count);
+
+                $query = "SELECT * FROM posts";
                 $select_all_posts_query = mysqli_query($connection,$query);
 
 
@@ -34,7 +38,6 @@
 
                         if($post_status !== 'Published') {
 
-                            echo "<h1 class='text-center'> NO POST SORRY</h1>";
 
                         }else{
                         ?>
