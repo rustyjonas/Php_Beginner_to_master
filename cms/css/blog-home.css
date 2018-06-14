@@ -4,9 +4,16 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-body {
+body{
+    padding-top: 70px;
 }
 
-footer {
+footer{
     margin: 50px 0;
+}
+
+.pager li .active_link {
+
+    background: #000 !important;
+
 }
