@@ -34,16 +34,18 @@ if(isset($_POST['edit_user'])){
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
 
-//    move_uploaded_file($post_image_temp, "image/$post_image");
 
-    $query = "SELECT randSalt FROM users";
-    $select_randsalt_query = mysqli_query($connection, $query);
-    if(!$select_randsalt_query) {
-        die("Query Failed" . mysqli_error($connection));
+    if(!empty($user_password)){
+
+        $query_password = "SELECT user_password FROM users WHERE user_id = {$the_user_id}";
+        $get_user_query = mysqli_query($connection,$query_password);
+        confirmQuery($get_user_query);
+
+        $row = mysqli_fetch_array($get_user_query);
+
+        $db_user_password = $row['user_password'];
     }
-    $row = mysqli_fetch_array($select_randsalt_query);
-    $salt = $row['randSalt'];
-    $hashed_password = crypt($user_password, $salt);
+    $hashed_password = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => 12) );
 
 
 
