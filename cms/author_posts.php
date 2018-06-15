@@ -20,10 +20,10 @@
                 if(isset($_GET['p_id'])){
 
                     $the_post_id = $_GET['p_id'];
-                    $the_post_author = $_GET['author'];
+                    $the_post_user = $_GET['user'];
 
                 }
-                $query = "SELECT * FROM posts WHERE post_author = '{$the_post_author}'";
+                $query = "SELECT * FROM posts WHERE post_user = '{$the_post_user}'";
                 $select_all_posts_query = mysqli_query($connection,$query);
 
 
