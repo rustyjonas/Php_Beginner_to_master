@@ -21,7 +21,7 @@ if(isset($_GET['edit_user'])) {
         $randSalt = $row['randSalt'];
     }
 
-}
+
 if(isset($_POST['edit_user'])){
     $user_firstname = $_POST['user_firstname'];
     $user_lastname = $_POST['user_lastname'];
@@ -66,7 +66,11 @@ if(!empty($user_password)){
 
 }
 
+} else {
 
+    header("Location: index.php");
+
+}
 
 
 
