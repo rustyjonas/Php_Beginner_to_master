@@ -13,7 +13,9 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <li><a href="">Users Online:  <?php echo users_online();?></a></li>
+<!--        <li><a href="">Users Online:  --><?php //echo users_online();?><!--</a></li>-->
+
+        <li><a href="">Users Online:  <span class="useronline"></span></a></li>
 
         <li><a href="../index.php">HOME SITE</a></li>
 

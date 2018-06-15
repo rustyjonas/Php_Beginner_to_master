@@ -28,8 +28,17 @@ $('#load-screen').delay(300).fadeOut(600, function(){
     $(this).remove();
 })
 
-
-
-
-
 });
+
+function loadUsersOnline(){
+
+    $.get("functions.php?onlineusers=result", function(data){
+
+        $(".useronline").text(data);
+
+
+    });
+
+}
+
+loadUsersOnline();
