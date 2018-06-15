@@ -51,6 +51,7 @@
 
 
                     <div class="form-group">
+                        <label for="category">Category: </label>
                         <select name="post_category" id="post_category">
                             <?php
                             $query = "SELECT * FROM categories";
@@ -69,11 +70,31 @@
                         </select>
                     </div>
 
-
                     <div class="form-group">
-                        <label for="title">Post Author</label>
-                        <input type="text" name="author" class="form-control">
+                        <label for="users">Users: </label>
+                        <select name="post_category" id="post_category">
+                            <?php
+                            $users_query = "SELECT * FROM users";
+                            $select_users = mysqli_query($connection,$query);
+
+                            confirmQuery($select_users);
+
+                            while($row = mysqli_fetch_assoc($select_users)) {
+                                $user_id = $row['user_id'];
+                                $username = $row['username'];
+
+                                echo "<option value='{$user_id}'>{$username}</option>";
+
+                            }
+                            ?>
+                        </select>
                     </div>
+
+<!---->
+<!--                    <div class="form-group">-->
+<!--                        <label for="title">Post Author</label>-->
+<!--                        <input type="text" name="author" class="form-control">-->
+<!--                    </div>-->
 
                     <div class="form-group">
                         <label for="post_tags">Post Tags</label>
