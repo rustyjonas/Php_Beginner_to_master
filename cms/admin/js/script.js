@@ -41,4 +41,9 @@ function loadUsersOnline(){
 
 }
 
-loadUsersOnline();
+setInterval(function () {
+
+    loadUsersOnline();
+
+});
+
