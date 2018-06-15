@@ -19,8 +19,8 @@ if(isset($_GET['edit_user'])) {
         $user_image = $row['user_image'];
         $user_role = $row['user_role'];
         $randSalt = $row['randSalt'];
-
     }
+
 }
 if(isset($_POST['edit_user'])){
     $user_firstname = $_POST['user_firstname'];
@@ -33,21 +33,25 @@ if(isset($_POST['edit_user'])){
     $username = $_POST['username'];
     $user_email = $_POST['user_email'];
     $user_password = $_POST['user_password'];
+    $post_date = date('d-m-y');
 
+}
 
-    if(!empty($user_password)){
+if(!empty($user_password)){
 
-        $query_password = "SELECT user_password FROM users WHERE user_id = {$the_user_id}";
-        $get_user_query = mysqli_query($connection,$query_password);
-        confirmQuery($get_user_query);
+    $query_password = "SELECT user_password FROM users WHERE user_id = {$the_user_id}";
+    $get_user_query = mysqli_query($connection,$query_password);
+    confirmQuery($get_user_query);
 
-        $row = mysqli_fetch_array($get_user_query);
+    $row = mysqli_fetch_array($get_user_query);
 
-        $db_user_password = $row['user_password'];
+    $db_user_password = $row['user_password'];
+
+    if($db_user_password != $user_password){
+
+        $hashed_password = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => 12) );
+
     }
-    $hashed_password = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => 12) );
-
-
 
     $query = "UPDATE users SET user_firstname = '{$user_firstname}', user_lastname = '{$user_lastname}',
                   user_role = '{$user_role}', username = '{$username}', user_email = '{$user_email}',
@@ -56,7 +60,17 @@ if(isset($_POST['edit_user'])){
     $update_user_query = mysqli_query($connection,$query);
 
     confirmQuery($update_user_query);
+
+    echo "User Updated" . "<a href='users.php'>View Users</a>";
+
+
 }
+
+
+
+
+
+
 ?>
 
 
