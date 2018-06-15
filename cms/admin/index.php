@@ -7,7 +7,7 @@
 
         $session = session_id();
         $time = time();
-        $time_out_in_seconds = 60;
+        $time_out_in_seconds = 30;
         $time_out = $time - $time_out_in_seconds;
 
         $query = "SELECT * FROM users_online WHERE session = '{$session}'";
@@ -20,11 +20,18 @@
             
         } else {
 
+            mysqli_query($connection, "UPDATE users_online SET time = '$time' WHERE session = '$session'");
+
         }
-        
-        
-        
-        
+
+        $users_online_query = mysqli_query($connection, "SELECT * FROM users_online WHERE time > '$time_out'");
+        $count_user = mysqli_num_rows($users_online_query);
+
+
+
+
+
+
         ?>
 
 
@@ -43,6 +50,14 @@
                         <h1 class="page-header">
                             Welcome To Admin
                             <small><?php echo $_SESSION['username']; ?> </small>
+                        </h1>
+
+                        <h1>
+
+                            <?php
+                                echo $count_user;
+                            ?>
+
                         </h1>
 
                     </div>
