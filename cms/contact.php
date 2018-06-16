@@ -9,11 +9,7 @@ if(isset($_POST['submit'])){
     $to = "rusty.letmaku28@gmail.com";
     $subject   = wordwrap($_POST['subject'], 70);
     $msg = $_POST['message'];
-    $headers = $_POST['email'];
-
-    $headers =  'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'From: Your name <info@address.com>' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $headers = "From: " . $_POST['email'];
 
     mail($to,$subject,$msg,$headers);
 }
