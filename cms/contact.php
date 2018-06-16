@@ -6,46 +6,17 @@
 
 if(isset($_POST['submit'])){
 
-    $username = $_POST['username'];
-    $email    = $_POST['email'];
-    $password = $_POST['password'];
+    $to = "rusty.letmaku28@gmail.com";
+    $subject   = wordwrap($_POST['subject'], 70);
+    $msg = $_POST['message'];
+    $headers = $_POST['email'];
 
-    if(!empty($username) && !empty($email) && !empty($password)){
-        $username = mysqli_real_escape_string($connection,$username);
-        $email    = mysqli_real_escape_string($connection,$email);
-        $password = mysqli_real_escape_string($connection,$password);
+    $headers =  'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'From: Your name <info@address.com>' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
-        $password = password_hash($password, PASSWORD_DEFAULT, array('cost' => 12) );
-
-
-//        $query = "SELECT randSalt FROM users";
-//        $select_randsalt_query = mysqli_query($connection, $query);
-//        if(!$select_randsalt_query) {
-//            die("Query Failed" . mysqli_error($connection));
-//        }
-//
-//        $row = mysqli_fetch_array($select_randsalt_query);
-//
-//        $salt = $row['randSalt'];
-//
-//        $password = crypt($password, $salt);
-
-        $query = "INSERT INTO users (username, user_password, user_email, user_role) VALUES ('{$username}','{$password}','{$email}','Subscriber')";
-        $register_user_query = mysqli_query($connection,$query);
-        if(!$register_user_query) {
-            die("QUERY FAILED " . mysqli_error($connection));
-        }
-
-        $message = "Your Registration has been submitted";
-
-    }else{
-
-        $message = "Fields cannot be empty";
-    }
-} else{
-    $message = '';
+    mail($to,$subject,$msg,$headers);
 }
-
 
 
 
@@ -53,7 +24,6 @@ if(isset($_POST['submit'])){
 
 <!-- Navigation -->
 <?php  include "includes/navigation.php"; ?>
-
 
 <!-- Page Content -->
 <div class="container">
@@ -64,7 +34,7 @@ if(isset($_POST['submit'])){
                 <div class="col-xs-6 col-xs-offset-3">
                     <div class="form-wrap">
                         <h1>Contact</h1>
-                        <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
+                        <form role="form" action="" method="post" id="login-form" autocomplete="off">
 
                             <div class="form-group">
                                 <label for="email" class="sr-only">Email</label>
@@ -75,7 +45,7 @@ if(isset($_POST['submit'])){
                                 <input type="text" name="subject" id="subject" class="form-control" placeholder="Enter your subject">
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" name="body" id="body" cols="50" rows="10"></textarea>
+                                <textarea class="form-control" name="message" id="body" cols="50" rows="10"></textarea>
                             </div>
 
                             <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Submit">
