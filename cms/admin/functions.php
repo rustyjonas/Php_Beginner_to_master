@@ -1,6 +1,29 @@
 <?php
 
 
+function escape($string){
+
+    global $connection;
+
+    return mysqli_real_escape_string($connection, trim($string));
+
+}
+
+function set_message($msg){
+
+    if(!$msg){
+
+        $_SESSION['message'] = $msg;
+
+    }else{
+
+        $msg = "";
+
+    }
+
+}
+
+
 function users_online(){
         if(isset($_GET['onlineusers'])){
             global $connection;
