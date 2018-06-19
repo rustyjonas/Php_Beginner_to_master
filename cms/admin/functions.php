@@ -6,14 +6,8 @@ function redirect($location){
 }
 
 function register_user($username,$email,$password){
-    global $connection;
+        global $connection;
 
-
-    if(username_exists($username)){
-
-    }
-
-    if (!empty($username) && !empty($email) && !empty($password) && !username_exists($username) && !email_exists($email)) {
         $username = mysqli_real_escape_string($connection, $username);
         $email = mysqli_real_escape_string($connection, $email);
         $password = mysqli_real_escape_string($connection, $password);
@@ -24,7 +18,7 @@ function register_user($username,$email,$password){
         $register_user_query = mysqli_query($connection, $query);
 
         confirmQuery($register_user_query);
-    }
+
 }
 
 function login_user($username, $password){

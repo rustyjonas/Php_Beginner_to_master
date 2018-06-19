@@ -4,7 +4,7 @@
 
 <?php
 
-if(isset($_POST['submit'])) {
+if($_SERVER['REQUEST_METHOD'] == "POST") {
     $username   = trim($_POST['username']);
     $email      = trim($_POST['email']);
     $password   = trim($_POST['password']);
@@ -47,14 +47,19 @@ if(isset($_POST['submit'])) {
     foreach ($error as $key => $value){
 
         if(empty($value)) {
-//
-//            register_user($username,$email,$password);
-//
+
+            unset($error[$key]);
+
 //            login_user($username,$password);
-
         }
-
     } //foreach
+
+
+    if(empty($error)){
+
+        register_user($username,$email,$password);
+
+    }
 
 }
 ?>
@@ -93,7 +98,7 @@ if(isset($_POST['submit'])) {
 
                          </div>
                 
-                        <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
+                        <input type="submit" name="register" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
                     </form>
                  
                 </div>
