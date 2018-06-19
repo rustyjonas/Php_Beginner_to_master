@@ -4,44 +4,45 @@
 
 <?php
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit'])) {
+    $username   = trim($_POST['username']);
+    $email      = trim($_POST['email']);
+    $password   = trim($_POST['password']);
 
-    $username = $_POST['username'];
-    $email    = $_POST['email'];
-    $password = $_POST['password'];
+    $error = [
+            'username'=>'',
+            'email' => '',
+            'password' => ''
+    ];
 
+    if(strlen($username) < 4){
+        $error['username'] = 'Username needs to be longer';
+    }
 
-    if(!empty($username) && !empty($email) && !empty($password) && !username_exists($username)){
-        $username = mysqli_real_escape_string($connection,$username);
-        $email    = mysqli_real_escape_string($connection,$email);
-        $password = mysqli_real_escape_string($connection,$password);
+    if($username = '') {
+        $error['username'] = "Username cannot be empty";
+    }
 
-        $password = password_hash($password, PASSWORD_DEFAULT, array('cost' => 12) );
+    if(username_exists($username)){
+        $error['username'] = "Username already exists, pick another one";
+    }
 
-        $query = "INSERT INTO users (username, user_password, user_email, user_role) VALUES ('{$username}','{$password}','{$email}','Subscriber')";
-        $register_user_query = mysqli_query($connection,$query);
-        if(!$register_user_query) {
-            die("QUERY FAILED " . mysqli_error($connection));
-        }
+    if($email = '') {
+        $error['email'] = "Email cannot be empty";
+    }
 
-        $message = "Your Registration has been submitted";
+    if(email_exists($email)){
+        $error['email'] = "Email already exists, <a href='index.php'></a>";
+    }
 
-    }else if(username_exists($username)){
+    if($password == ''){
 
-        $message = "user exists";
+        $error['password'] = "Password cannot be empty";
 
     }
-    else{
 
-        $message = "Fields cannot be empty";
-    }
-} else{
-    $message = '';
+
 }
-
-
-
-
 ?>
 
     <!-- Navigation -->

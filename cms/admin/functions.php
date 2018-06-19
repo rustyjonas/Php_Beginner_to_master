@@ -1,5 +1,33 @@
 <?php
 
+function redirect($location){
+
+    return header("Location: " . $location);
+}
+
+function register_user($username,$email,$password){
+    global $connection;
+
+
+    if(username_exists($username)){
+
+    }
+
+    if (!empty($username) && !empty($email) && !empty($password) && !username_exists($username) && !email_exists($email)) {
+        $username = mysqli_real_escape_string($connection, $username);
+        $email = mysqli_real_escape_string($connection, $email);
+        $password = mysqli_real_escape_string($connection, $password);
+
+        $password = password_hash($password, PASSWORD_DEFAULT, array('cost' => 12));
+
+        $query = "INSERT INTO users (username, user_password, user_email, user_role) VALUES ('{$username}','{$password}','{$email}','Subscriber')";
+        $register_user_query = mysqli_query($connection, $query);
+
+        confirmQuery($register_user_query);
+    }
+}
+
+
 function recordCount($table){
     global $connection;
     $query = "SELECT * FROM " . $table;
@@ -33,6 +61,20 @@ function username_exists($username){
         return false;
     }
 }
+
+function email_exists($email){
+    global $connection;
+    $query = "SELECT * FROM users WHERE user_email = '{$email}'";
+    $result = mysqli_query($connection, $query);
+    confirmQuery($result);
+
+    if(mysqli_num_rows($result) > 0){
+        return true;
+    }else {
+        return false;
+    }
+}
+
 
 function is_admin($username = ''){
 
