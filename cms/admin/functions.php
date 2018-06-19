@@ -21,6 +21,19 @@ function checkStatus($table,$column,$status){
 
 }
 
+function username_exists($username){
+    global $connection;
+    $query = "SELECT * FROM users WHERE username = '{$username}'";
+    $result = mysqli_query($connection, $query);
+    confirmQuery($result);
+
+    if(mysqli_num_rows($result) > 0){
+        return true;
+    }else {
+        return false;
+    }
+}
+
 function is_admin($username = ''){
 
     global $connection;
@@ -37,9 +50,6 @@ function is_admin($username = ''){
     } else {
         return false;
     }
-
-
-
 }
 
 function checkUserRole($table, $column, $role){
