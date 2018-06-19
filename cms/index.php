@@ -16,8 +16,8 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-            <?php
 
+            <?php
                 if(isset($_GET['page'])){
 
                    $per_page = 5;
@@ -38,11 +38,18 @@
                     $page_1 = ($page * $per_page) - $per_page;
 
                 }
+            if(isset($_SESSION['user_role']) && isset($_SESSION['user_role']) == 'Admin' ){
 
+                $post_query_count = "SELECT * FROM posts";
+
+            } else {
 
                 $post_query_count = "SELECT * FROM posts WHERE post_status = 'Published'";
-                $find_count = mysqli_query($connection,$post_query_count);
-                $count = mysqli_num_rows($find_count);
+
+            }
+
+            $find_count = mysqli_query($connection,$post_query_count);
+            $count = mysqli_num_rows($find_count);
 
                 if($count < 1){
 

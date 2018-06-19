@@ -22,8 +22,15 @@
 
                 $post_category_id = $_GET['category'];
 
+                if(isset($_SESSION['user_role']) &&isset($_SESSION['user_role']) == 'Admin' ){
 
-                $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id AND post_status = 'Published'";
+                    $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id";
+
+                } else {
+
+                    $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id AND post_status = 'Published'";
+
+                }
                 $select_all_posts_query = mysqli_query($connection, $query);
 
 
