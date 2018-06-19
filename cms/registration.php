@@ -19,15 +19,17 @@ if(isset($_POST['submit'])) {
         $error['username'] = 'Username needs to be longer';
     }
 
-    if($username = '') {
+    if($username == '') {
         $error['username'] = "Username cannot be empty";
     }
+
 
     if(username_exists($username)){
         $error['username'] = "Username already exists, pick another one";
     }
 
-    if($email = '') {
+
+    if($email == '') {
         $error['email'] = "Email cannot be empty";
     }
 
@@ -54,7 +56,6 @@ if(isset($_POST['submit'])) {
 
     } //foreach
 
-
 }
 ?>
 
@@ -76,15 +77,21 @@ if(isset($_POST['submit'])) {
                         <div class="form-group">
                             <label for="username" class="sr-only">username</label>
                             <input autocomplete="on" type="text" name="username" id="username" class="form-control" placeholder="Enter Desired Username" value="<?php echo isset($username) ? $username : ''?>">
+                            <p><?php echo isset($error["username"]) ? $error["username"] : "" ?></p>
+
                         </div>
                          <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input autocomplete="on" type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com" value="<?php echo isset($email) ? $email : ''?>>
-                        </div>
+                            <input autocomplete="on" type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com" value="<?php echo isset($email) ? $email : ''?>">
+                             <p><?php echo isset($error["email"]) ? $error["email"] : "" ?></p>
+
+                         </div>
                          <div class="form-group">
                             <label for="password" class="sr-only">Password</label>
                             <input type="password" name="password" id="key" class="form-control" placeholder="Password">
-                        </div>
+                             <p><?php echo isset($error["password"]) ? $error["password"] : "" ?></p>
+
+                         </div>
                 
                         <input type="submit" name="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Register">
                     </form>
