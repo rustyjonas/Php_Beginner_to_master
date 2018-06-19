@@ -46,8 +46,7 @@
                 ?>
 
                 <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
+                    Posts
                 </h1>
 
                 <!-- First Blog Post -->
@@ -66,9 +65,7 @@
 
             <?php }
 
-            } else{
-                header("Location: index.php");
-            }
+
 
             ?>
 
@@ -163,7 +160,13 @@
                 </div>
             </div>
 
-            <?php   } ?>
+            <?php   }
+
+            } else{
+
+                header("Location: index.php");
+            }
+            ?>
 
                 </div>
 

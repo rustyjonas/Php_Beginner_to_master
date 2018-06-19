@@ -40,9 +40,18 @@
                 }
 
 
-                $post_query_count = "SELECT * FROM posts";
+                $post_query_count = "SELECT * FROM posts WHERE post_status = 'Published'";
                 $find_count = mysqli_query($connection,$post_query_count);
                 $count = mysqli_num_rows($find_count);
+
+                if($count < 1){
+
+                    echo "<h1 class='text-center'>No posts available</h1>";
+
+                } else {
+
+
+
 
                 $count = ceil($count / $per_page);
 
@@ -50,19 +59,15 @@
                 $select_all_posts_query = mysqli_query($connection,$query);
 
 
-                    while($row = mysqli_fetch_assoc($select_all_posts_query)){
+                    while($row = mysqli_fetch_assoc($select_all_posts_query)) {
                         $post_id = $row['post_id'];
                         $post_title = $row['post_title'];
                         $post_user = $row['post_user'];
                         $post_date = $row['post_date'];
                         $post_image = $row['post_image'];
-                        $post_content = substr($row['post_content'],0,100);
+                        $post_content = substr($row['post_content'], 0, 100);
                         $post_status = $row['post_status'];
 
-                        if($post_status !== 'Published') {
-
-
-                        }else{
                         ?>
 
                         <h1 class="page-header">
@@ -73,25 +78,27 @@
                         <!-- First Blog Post -->
 
                         <h2>
-                            <a href="post.php?p_id=<?php echo $post_id;?>"><?php echo $post_title; ?></a>
+                            <a href="post.php?p_id=<?php echo $post_id; ?>"><?php echo $post_title; ?></a>
                         </h2>
                         <p class="lead">
-                            by <a href="author_posts.php?user=<?php echo $post_user;?>&p_id=<?php echo $post_id; ?>"><?php echo $post_user; ?></a>
+                            by
+                            <a href="author_posts.php?user=<?php echo $post_user; ?>&p_id=<?php echo $post_id; ?>"><?php echo $post_user; ?></a>
                         </p>
                         <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date; ?></p>
                         <hr>
 
-                        <a href="post.php?p_id=<?php echo $post_id;?>">
+                        <a href="post.php?p_id=<?php echo $post_id; ?>">
                             <img width="100" class="img-responsive" src="admin/image/<?php echo $post_image; ?>" alt="">
                         </a>
 
                         <hr>
                         <p><?php echo $post_content; ?></p>
-                        <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id;?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id; ?>">Read More <span
+                                    class="glyphicon glyphicon-chevron-right"></span></a>
                         <hr>
 
-                    <?php }
-
+                        <?php
+                        }
                     }
             ?>
         </div>
