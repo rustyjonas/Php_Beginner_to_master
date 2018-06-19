@@ -54,11 +54,11 @@ function login_user($username, $password){
         $_SESSION['lastname'] = $db_user_lastname;
         $_SESSION['user_role'] = $db_user_role;
 
-        header("Location: ../admin");
+        redirect("/PHP/Php_Beginner_to_master-U/cms/admin");
 
     } else {
 
-        header("Location: ../index.php");
+        redirect("/PHP/Php_Beginner_to_master-U/cms/index.php");
 
     }
 

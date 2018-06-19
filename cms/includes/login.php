@@ -7,7 +7,7 @@
 
 if(isset($_POST['login'])){
 
-    login_user($username, $email);
+    login_user($username, $password);
 
 
 }
