@@ -3,15 +3,8 @@
 
     <div id="wrapper">
 
-        <?php
-
-
-        ?>
-
-
         <!-- Navigation -->
     <?php include "includes/admin_navigation.php"; ?>
-
 
         <div id="page-wrapper">
 
@@ -29,9 +22,6 @@
                 </div>
                 <!-- /.row -->
 
-
-                <!-- /.row -->
-
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="panel panel-primary">
@@ -42,12 +32,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
 
-                                            <?php
-                                            $query = "SELECT * FROM posts";
-                                            $select_all_post = mysqli_query($connection,$query);
-                                            $post_counts = mysqli_num_rows($select_all_post);
-                                            echo "<div class='huge'>$post_counts</div>";
-                                            ?>
+                                         <div class='huge'><?php echo $posts_counts = recordCount('posts'); ?></div>
 
                                         <div>Posts</div>
                                     </div>
@@ -70,13 +55,7 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-
-                                        <?php
-                                        $query = "SELECT * FROM comments";
-                                        $select_all_comments = mysqli_query($connection,$query);
-                                        $comment_counts = mysqli_num_rows($select_all_comments);
-                                        echo "<div class='huge'>$comment_counts</div>";
-                                        ?>
+                                        <div class='huge'><?php echo $comments_counts = recordCount('comments'); ?></div>
 
                                         <div>Comments</div>
                                     </div>
@@ -99,14 +78,7 @@
                                         <i class="fa fa-user fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-
-                                        <?php
-                                        $query = "SELECT * FROM users";
-                                        $select_all_users = mysqli_query($connection,$query);
-                                        $users_counts = mysqli_num_rows($select_all_users);
-                                        echo "<div class='huge'>$users_counts</div>";
-                                        ?>
-
+                                        <div class='huge'><?php echo $users_counts = recordCount('users'); ?></div>
                                         <div>Users</div>
                                     </div>
                                 </div>
@@ -128,13 +100,7 @@
                                         <i class="fa fa-list fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-
-                                        <?php
-                                        $query = "SELECT * FROM categories";
-                                        $select_all_categories = mysqli_query($connection,$query);
-                                        $categories_counts = mysqli_num_rows($select_all_categories);
-                                        echo "<div class='huge'>$categories_counts</div>";
-                                        ?>
+                                        <div class='huge'><?php echo $categories_counts = recordCount('categories'); ?></div>
 
                                         <div>Categories</div>
                                     </div>
@@ -153,22 +119,14 @@
                 <!-- /.row -->
 
                 <?php
-                $query = "SELECT * FROM posts WHERE post_status  ='published'";
-                $select_all_published_post = mysqli_query($connection,$query);
-                $post_published_counts = mysqli_num_rows($select_all_published_post);
+                $post_published_counts = checkStatus('posts','post_status','published');
 
+                $post_draft_counts = checkStatus('posts','post_status','draft');
 
-                $query = "SELECT * FROM posts WHERE post_status  ='draft'";
-                $select_all_draft_post = mysqli_query($connection,$query);
-                $post_draft_counts = mysqli_num_rows($select_all_draft_post);
+                $unapproved_comment_count = checkStatus('comments','comment_status','unapproved');
 
-                $query = "SELECT * FROM comments WHERE comment_status  ='unapproved'";
-                $unapproved_comment_query = mysqli_query($connection,$query);
-                $unapproved_comment_count = mysqli_num_rows($unapproved_comment_query);
+                $subscribers_count = checkUserRole('users','user_role','subscriber');
 
-                $query = "SELECT * FROM users WHERE user_role  ='Subscriber'";
-                $select_all_subscribers = mysqli_query($connection,$query);
-                $subscribers_count = mysqli_num_rows($select_all_subscribers);
                 ?>
 
                 <div class="row">
@@ -183,7 +141,7 @@
                                 <?php
 
                                 $element_text = ['All Posts', 'Active Posts', 'Draft Posts' ,'Comments','Pending Comments', 'Users', 'Subscribers', 'Categories'];
-                                $element_count = [$post_counts, $post_published_counts, $post_draft_counts, $comment_counts, $unapproved_comment_count ,$users_counts, $subscribers_count, $categories_counts];
+                                $element_count = [$posts_counts, $post_published_counts, $post_draft_counts, $comments_counts, $unapproved_comment_count ,$users_counts, $subscribers_count, $categories_counts];
 
                                 for ($i = 0;$i < count($element_text); $i++){
 

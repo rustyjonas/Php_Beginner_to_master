@@ -1,6 +1,4 @@
 
-<?php session_start();?>
-
 <div class="col-md-4">
 
     <!-- Blog Search Well -->

@@ -51,6 +51,14 @@ if(isset($_POST['checkBoxArray'])) {
                     $post_tags = $row['post_tags'];
                     $post_content = $row['post_content'];
 
+                    if(empty($post_tags)){
+
+                        $post_tags = "Generic";
+
+                    }
+
+
+
                     $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_status) 
                           VALUES('{$post_category_id}','{$post_title}', '{$post_author}','{$post_date}','{$post_image}','{$post_content}','{$post_tags}','{$post_status}')";
                     $clone_posts_query = mysqli_query($connection,$query);
