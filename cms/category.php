@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <?php include "includes/db.php";?>
     <!-- Header -->
 <?php include "includes/header.php"; ?>
@@ -63,19 +65,13 @@
                 }
 
 
-                if(mysqli_stmt_num_rows($stmt) < 1){
+                if(mysqli_stmt_num_rows($stmt) === 0){
 
                     echo "<h1 class='text-center'>No category available</h1>";
 
-                } else{
+                }
 
-                while ($row = mysqli_fetch_assoc($select_all_posts_query)) {
-                    $post_id = $row['post_id'];
-                    $post_title = $row['post_title'];
-                    $post_author = $row['post_author'];
-                    $post_date = $row['post_date'];
-                    $post_image = $row['post_image'];
-                    $post_content = substr($row['post_content'], 0, 100);
+                while (mysqli_stmt_fetch($stmt)):
 
                     ?>
 
@@ -100,8 +96,8 @@
                                 class="glyphicon glyphicon-chevron-right"></span></a>
                     <hr>
 
-                <?php }
-                }
+                <?php
+                    endwhile;
             } else{
 
                 header("location: index.php");
