@@ -19,6 +19,8 @@
 
     <!-- Login -->
     <div class="well">
+        <?php echo $_SESSION['user_role'];?>
+
         <?php if(isset($_SESSION['user_role'])): ?>
 
             <h4>Logged in as <?php echo $_SESSION['username'] ?></h4>

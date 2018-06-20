@@ -7,6 +7,9 @@
 <?php include "includes/navigation.php" ;?>
 
 
+<?php include "admin/functions.php"; ?>
+
+
 
     <!-- Page Content -->
     <div class="container">
@@ -22,14 +25,17 @@
 
                 $post_category_id = $_GET['category'];
 
-                if(isset($_SESSION['user_role']) &&isset($_SESSION['user_role']) == 'Admin' ){
+                if(is_admin($_SESSION['username'])){
 
-                    $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id";
+                    $stmt1 = mysqli_prepare($connection,"SELECT post_id, post_title, post_author, post_date, post_image,
+                    post_content FROM posts WHERE post_category_id = ?");
 
                 } else {
 
-                    $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id AND post_status = 'Published'";
+                    $stmt2 = mysqli_prepare($connection,"SELECT post_id, post_title, post_author, post_date, post_image,
+                    post_content FROM posts WHERE post_category_id = ? AND post_status = ?");
 
+                    $published = 'Published';
                 }
                 $select_all_posts_query = mysqli_query($connection, $query);
 
