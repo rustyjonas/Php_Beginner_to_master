@@ -97,7 +97,7 @@
                     <hr>
 
                 <?php
-                    endwhile;
+                    endwhile; mysqli_stmt_close($stmt);
             } else{
 
                 header("location: index.php");
