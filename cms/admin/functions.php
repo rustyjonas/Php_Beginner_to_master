@@ -1,5 +1,32 @@
 <?php
 
+function insert_categories(){
+    global $connection;
+        if(isset($_POST['submit'])){
+
+            $cat_title = $_POST['cat_title'];
+
+
+            if($cat_title == "" || empty($cat_title)){
+
+                echo "This Field should not be empty";
+
+            } else {
+
+                $stmt = mysqli_prepare($connection, "INSERT INTO categories (cat_title) VALUES (?)");
+
+                mysqli_stmt_bind_param($stmt, 's',$cat_title);
+
+                mysqli_stmt_execute($stmt);
+
+                    if(!$stmt) {
+
+                        die('QUERY FAILED ') . mysqli_error($connection);
+                    }
+            }
+        }
+}
+
 function redirect($location){
 
     return header("Location: " . $location);
@@ -209,25 +236,6 @@ function confirmQuery($result){
 
     if(!$result){
         die('QUERY FAILED' . mysqli_error($connection));
-    }
-}
-
-function insert_categories(){
-    global $connection;
-
-    if(isset($_POST['submit'])){
-        $cat_title = $_POST['cat_title'];
-
-        if($cat_title == "" || empty($cat_title)) {
-            echo "This field should not be empty";
-
-        } else {
-            $query = "INSERT INTO categories (cat_title) VALUES ('{$cat_title}')";
-
-            $create_category_query = mysqli_query($connection,$query);
-
-            confirmQuery($create_category_query);
-        }
     }
 }
 

@@ -19,6 +19,8 @@
 
     <!-- Login -->
     <div class="well">
+
+
         <?php echo $_SESSION['user_role'];?>
 
         <?php if(isset($_SESSION['user_role'])): ?>
