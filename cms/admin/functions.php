@@ -28,6 +28,36 @@ function insert_categories(){
 function redirect($location){
 
     return header("Location: " . $location);
+
+    exit;
+
+}
+
+function ifItIsMethod($method=null){
+
+    if($_SERVER['REQUEST_METHOD'] == strtoupper($method)){
+        return true;
+    }
+    return false;
+}
+
+function isLoggedIn(){
+
+    if(isset($_SESSION['user_role'])){
+        return true;
+    } else{
+        return false;
+    }
+}
+
+function checkIfUserIsLoggedInAndRedirect($redirrectLocation=null){
+
+    if(isLoggedIn()){
+
+        redirect($redirrectLocation);
+
+    }
+
 }
 
 function register_user($username,$email,$password){
@@ -90,7 +120,6 @@ function login_user($username, $password){
 
 }
 
-
 function recordCount($table){
     global $connection;
     $query = "SELECT * FROM " . $table;
@@ -138,7 +167,6 @@ function email_exists($email){
     }
 }
 
-
 function is_admin($username = ''){
 
     global $connection;
@@ -169,8 +197,6 @@ function checkUserRole($table, $column, $role){
 
 }
 
-
-
 function escape($string){
 
     global $connection;
@@ -192,7 +218,6 @@ function set_message($msg){
     }
 
 }
-
 
 function users_online(){
         if(isset($_GET['onlineusers'])){
