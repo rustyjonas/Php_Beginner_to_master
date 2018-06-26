@@ -3,9 +3,7 @@
 function insert_categories(){
     global $connection;
         if(isset($_POST['submit'])){
-
             $cat_title = $_POST['cat_title'];
-
 
             if($cat_title == "" || empty($cat_title)){
 
@@ -15,7 +13,6 @@ function insert_categories(){
                 $stmt = mysqli_prepare($connection, "INSERT INTO categories (cat_title) VALUES (?)");
                 mysqli_stmt_bind_param($stmt, 's',$cat_title);
                 mysqli_stmt_execute($stmt);
-
                     if(!$stmt) {
 
                         die('QUERY FAILED ') . mysqli_error($connection);
@@ -50,7 +47,7 @@ function isLoggedIn(){
     }
 }
 
-function checkIfUserIsLoggedInAndRedirect($redirrectLocation=null){
+function checkIfUserIsLoggedInAndRedirect($redirrectLocation = null){
 
     if(isLoggedIn()){
 
@@ -102,7 +99,7 @@ function login_user($username, $password){
     $db_user_role = $row['user_role'];
 
 
-    if(password_verify($password, $db_user_password) && $username == $db_username){
+    if(password_verify($password, $db_user_password)){
 
         $_SESSION['username'] = $db_username;
         $_SESSION['firstname'] = $db_user_firstname;
@@ -113,11 +110,13 @@ function login_user($username, $password){
 
     } else {
 
+        return false;
+
         redirect("/PHP/Php_Beginner_to_master-U/cms/index.php");
 
     }
 
-
+    return true;
 }
 
 function recordCount($table){

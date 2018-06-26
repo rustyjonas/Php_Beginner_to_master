@@ -1,3 +1,20 @@
+<?php
+
+if(ifItIsMethod('post')){
+
+    if(isset($_POST['username']) && isset($_POST['password'])){
+
+        login_user($_POST['username'],($_POST['password']));
+
+    } else {
+
+        redirect('index');
+    }
+}
+
+
+?>
+
 
 <div class="col-md-4">
 
@@ -20,9 +37,6 @@
     <!-- Login -->
     <div class="well">
 
-
-        <?php echo $_SESSION['user_role'];?>
-
         <?php if(isset($_SESSION['user_role'])): ?>
 
             <h4>Logged in as <?php echo $_SESSION['username'] ?></h4>
@@ -32,7 +46,7 @@
         <?php else: ?>
 
             <h4>Login</h4>
-            <form action="includes/login.php" method="post">
+            <form  method="post">
                 <div class="form-group">
                     <input  name="username" type="text" class="form-control" placeholder="Enter Username">
                 </div>
@@ -42,6 +56,13 @@
                     <span class="input-group-btn">
                     <button class="btn btn-primary" type="submit" name="login">Submit</button>
                 </span>
+                </div>
+                
+                <div class="form-group">
+
+                    <a href="forgot.php?forgot=<?php echo uniqid(true);?>">Forgot Password</a>
+                    
+                    
                 </div>
             </form><!--search form-->
 
