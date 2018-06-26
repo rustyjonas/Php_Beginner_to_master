@@ -25,8 +25,6 @@
 
             $email = $_POST['email'];
 
-            echo $email;
-
             $length = 50;
 
             $token = bin2hex(openssl_random_pseudo_bytes($length));
@@ -62,18 +60,11 @@
 
                 $mail->Body = '<p>Please click to reset your password
 
-                <a href="http://localhost:888/cms/reset.php?email='.$email.'&token='.$token.'">http://localhost:888/cms/reset.php?email="'.$email.'&token='.$token.'</a></p>';
-                
-
-                
+                <a href="http://localhost:8888/cms/reset.php?email='.$email.'&token='.$token.'">http://localhost:888/cms/reset.php?email="'.$email.'&token='.$token.'</a></p>';
 
                 if($mail->send()){
 
-                   echo "IT WAS SENT";
-
-                } else {
-
-                    echo "NOT SENT";
+                   $emailSent = true;
 
                 }
         }
@@ -95,13 +86,10 @@
 
                         <?php if(!isset( $emailSent)): ?>
 
-
                                 <h3><i class="fa fa-lock fa-4x"></i></h3>
                                 <h2 class="text-center">Forgot Password?</h2>
                                 <p>You can reset your password here.</p>
                                 <div class="panel-body">
-
-
 
 
                                     <form id="register-form" role="form" autocomplete="off" class="form" method="post">
@@ -122,11 +110,7 @@
                                 </div><!-- Body-->
 
                             <?php else: ?>
-
-
                                 <h2>Please check your email</h2>
-
-
                             <?php endIf; ?>
 
 
