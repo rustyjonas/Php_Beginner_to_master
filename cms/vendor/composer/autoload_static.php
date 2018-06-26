@@ -20,11 +20,22 @@ class ComposerStaticInit9727a4b0dd22fcb857591d9cae7f966c
         ),
     );
 
+    public static $classMap = array (
+        'Config' => __DIR__ . '/../..' . '/classes/Config.php',
+        'Example' => __DIR__ . '/../..' . '/classes/Example.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit9727a4b0dd22fcb857591d9cae7f966c::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit9727a4b0dd22fcb857591d9cae7f966c::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit9727a4b0dd22fcb857591d9cae7f966c::$classMap;
 
         }, null, ClassLoader::class);
     }
