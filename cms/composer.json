@@ -1,0 +1,19 @@
+{
+    "name": "rustyjonas/cms",
+    "require": {
+        "phpmailer/phpmailer": "^6.0"
+    },
+
+    "autoload": {
+        "classmap": [
+            "classes"
+        ]
+    },
+
+    "authors": [
+        {
+            "name": "Rusty Jonas",
+            "email": "rusty.letmaku28@gmail.com"
+        }
+    ]
+}

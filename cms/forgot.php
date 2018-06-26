@@ -13,7 +13,7 @@
 
 
 
-    if(!ifItIsMethod('get') && !isset($_GET['forgot'])){
+    if(!isset($_GET['forgot'])){
 
         redirect('index');
 
@@ -24,6 +24,8 @@
         if(isset($_POST['email'])){
 
             $email = $_POST['email'];
+
+            echo $email;
 
             $length = 50;
 
@@ -58,7 +60,12 @@
 
                 $mail->Subject = 'This is a test email';
 
-                $mail->Body = '<h1>Cómo estas tú</h1>';
+                $mail->Body = '<p>Please click to reset your password
+
+                <a href="http://localhost:888/cms/reset.php?email='.$email.'&token='.$token.'">http://localhost:888/cms/reset.php?email="'.$email.'&token='.$token.'</a></p>';
+                
+
+                
 
                 if($mail->send()){
 
