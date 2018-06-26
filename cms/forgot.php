@@ -5,6 +5,9 @@
 
 <?php
 
+    require 'vendor/autoload.php';
+    require 'Classes/Config.php';
+
 
 
     if(!ifItIsMethod('get') && !isset($_GET['forgot'])){
@@ -30,14 +33,39 @@
                 mysqli_stmt_execute($stmt);
                 mysqli_stmt_close($stmt);
 
-            } else {
+            } /*
+                configure PHPMailer
 
-                echo mysqli_error($connection);
+                */
 
-            }
+                $mail = new \PHPMailer\PHPMailer\PHPMailer();
+                $mail->isSMTP();
+                $mail->Host = Config::SMTP_HOST;
+                $mail->SMTPAuth = true;
+                $mail->Username = Config::SMTP_USER;
+                $mail->Password = Config::SMTP_PASSWORD;
+                $mail->Port = Config::SMTP_PORT;
+                $mail->SMTPSecure = 'tls';
+                $mail->SMTPAuth = true;
+                $mail->isHTML(true);
 
+                $mail->setFrom('rusty.letmaku28@gmail.com', 'Rusty Jonas');
+                $mail->addAddress($email);
+
+                $mail->Subject = 'This is a test email';
+
+                $mail->Body = 'Email Body';
+
+                if($mail->send()){
+
+                   echo "IT WAS SENT";
+
+                } else {
+
+                    echo "NOT SENT";
+
+                }
         }
-
     }
 
 
