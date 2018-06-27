@@ -1,7 +1,7 @@
-<?php include "includes/db.php"; ?>
-<?php include "includes/header.php"; ?>
 
-<?php include "admin/functions.php";  ?>
+<?php include "header.php"; ?>
+
+<?php include "../admin/functions.php";  ?>
 
 
 <?php
@@ -24,7 +24,7 @@
 
 <!-- Navigation -->
 
-<?php // include "includes/navigation.php"; ?>
+<?php  include "navigation.php"; ?>
 
 
 <!-- Page Content -->
@@ -80,6 +80,6 @@
 
 	<hr>
 
-	<?php include "includes/footer.php";?>
+	<?php include "footer.php";?>
 
 </div> <!-- /.container -->

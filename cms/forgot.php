@@ -60,7 +60,7 @@
 
                 $mail->Body = '<p>Please click to reset your password
 
-                <a href="http://localhost:8888/cms/reset.php?email='.$email.'&token='.$token.'">http://localhost:888/cms/reset.php?email="'.$email.'&token='.$token.'</a></p>';
+                <a href="http://localhost/PHP/Php_Beginner_to_master-U/cms/reset.php?email='.$email.'&token='.$token.'">http://localhost/PHP/Php_Beginner_to_master-U/cms/reset.php?email="'.$email.'&token='.$token.'</a></p>';
 
                 if($mail->send()){
 
@@ -104,7 +104,7 @@
                                             <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
                                         </div>
 
-                                        <input type="hidden" class="hide" name="token" id="token" value="">
+                                        <input type="hidden" class="hidden" name="token" id="token" value="">
                                     </form>
 
                                 </div><!-- Body-->
