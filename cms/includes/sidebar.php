@@ -2,14 +2,19 @@
 
 if(ifItIsMethod('post')){
 
-    if(isset($_POST['username']) && isset($_POST['password'])){
+    if(isset($_POST['login'])){
 
-        login_user($_POST['username'],($_POST['password']));
+        if(isset($_POST['username']) && isset($_POST['password'])){
 
-    } else {
+            login_user($_POST['username'],($_POST['password']));
 
-        redirect('index');
+        } else {
+
+            redirect('index');
+        }
+
     }
+
 }
 
 

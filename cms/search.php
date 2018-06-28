@@ -2,6 +2,7 @@
     <!-- Header -->
 <?php include "includes/header.php"; ?>
 
+<?php include "admin/functions.php"; ?>
 
     <!-- Navigation -->
 <?php include "includes/navigation.php" ;?>
