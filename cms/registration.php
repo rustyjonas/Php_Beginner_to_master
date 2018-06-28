@@ -4,7 +4,12 @@
 
 <?php
 
-if($_SERVER['REQUEST_METHOD'] == "POST") {
+require 'vendor/autoload.php';
+
+$pusher = new Pusher\Pusher('b95d07e90fcf853e4e6f','bd3c60559f8c426bd89d','551458', 'us2');
+
+
+if(ifItIsMethod('post')) {
     $username   = trim($_POST['username']);
     $email      = trim($_POST['email']);
     $password   = trim($_POST['password']);
@@ -58,6 +63,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     if(empty($error)){
 
         register_user($username,$email,$password);
+
+        $pusher->trigger('notifications','new_user',$username);
 
         login_user($username, $password);
 
