@@ -1,7 +1,10 @@
 
-<?php include "header.php"; ?>
+<?php include "db.php"; ?>
 
-<?php include "../admin/functions.php";  ?>
+<?php include "./header.php"; ?>
+
+<?php include "../admin/functions.php"; ?>
+
 
 
 <?php
@@ -23,8 +26,7 @@
 ?>
 
 <!-- Navigation -->
-
-<?php  include "navigation.php"; ?>
+<?php include "navigation.php"; ?>
 
 
 <!-- Page Content -->

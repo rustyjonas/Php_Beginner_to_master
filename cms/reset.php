@@ -1,25 +1,27 @@
 <?php  include "includes/db.php"; ?>
 <?php  include "includes/header.php"; ?>
 
-<?php //include "admin/functions.php"; ?>
-
+<?php include "admin/functions.php"; ?>
 
 <?php
 
-//    if(!isset($_GET['email']) && !isset($_GET['token'])){
-//
-//        redirect('index');
-//
-//
-//    }
+$verified = false;
 
-$email = 'rusty.letmaku28@gmail.com';
+    if(!isset($_GET['email']) && !isset($_GET['token'])){
 
-$token = 'f81d3ad9f6a24d31b73cc6783b9b404bbecab1dba3e01b04dec323104a59dfe7a1a49f0c65165d02754833500f9c075beb30';
+        redirect('index');
+
+
+    }
+
+//
+//$email = 'rusty.letmaku28@gmail.com';
+//
+//$token = 'f81d3ad9f6a24d31b73cc6783b9b404bbecab1dba3e01b04dec323104a59dfe7a1a49f0c65165d02754833500f9c075beb30';
 
 if($stmt = mysqli_prepare($connection, 'SELECT username, user_email, token FROM users WHERE token = ?')){
 
-    mysqli_stmt_bind_param($stmt, "s", $token);
+    mysqli_stmt_bind_param($stmt, "s", $_GET['token']);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_bind_result($stmt, $username, $user_email, $token);
     mysqli_stmt_fetch($stmt);
@@ -42,17 +44,17 @@ if($stmt = mysqli_prepare($connection, 'SELECT username, user_email, token FROM 
 
             if($stmt = mysqli_prepare($connection, "UPDATE users SET token = '', user_password = '{$hashedPassword}' WHERE user_email = ?")){
 
-                mysqli_stmt_bind_param($stmt,"s", $email);
+                mysqli_stmt_bind_param($stmt,"s", $_GET['email']);
                 mysqli_stmt_execute($stmt);
                 if(mysqli_stmt_affected_rows($stmt) >= 1){
 
-                    echo "IT WAS AFFECTED";
-
-                } else {
-
-                    echo "BAD QUERY";
+                    redirect("includes/login.php");
 
                 }
+
+                mysqli_stmt_close($stmt);
+
+                $verified = true;
 
 
             };
@@ -75,6 +77,8 @@ if($stmt = mysqli_prepare($connection, 'SELECT username, user_email, token FROM 
 <!-- Page Content -->
 <div class="container">
 
+    <?php if(!$verified): ?>
+
     <div class="form-gap"></div>
     <div class="container">
         <div class="row">
@@ -83,8 +87,6 @@ if($stmt = mysqli_prepare($connection, 'SELECT username, user_email, token FROM 
                     <div class="panel-body">
                         <div class="text-center">
 
-
-                        <?php if(!isset( $emailSent)): ?>
 
     <h3><i class="fa fa-lock fa-4x"></i></h3>
     <h2 class="text-center">Reset Password</h2>
@@ -111,10 +113,6 @@ if($stmt = mysqli_prepare($connection, 'SELECT username, user_email, token FROM 
 
     </div><!-- Body-->
 
-<?php else: ?>
-    <h2>Please check your email</h2>
-<?php endIf; ?>
-
 
 </div>
 </div>
@@ -123,6 +121,11 @@ if($stmt = mysqli_prepare($connection, 'SELECT username, user_email, token FROM 
 </div>
 </div>
 
+    <?php else: ?>
+
+    <?php redirect('includes/login.php')?>
+
+    <?php endif;?>
 
 <hr>
 

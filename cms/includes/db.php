@@ -1,3 +1,5 @@
+
+
 <?php
 
 ob_start();
@@ -12,3 +14,5 @@ mysqli_query($connection,$query);
 //if($connection){
 //    echo "We are connected";
 //}
+?>
+

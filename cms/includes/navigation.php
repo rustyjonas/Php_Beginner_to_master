@@ -1,9 +1,7 @@
 
 <?php include "db.php"; ?>
 
-<?php include "./admin/functions.php"; ?>
-
-
+<?php include "header.php"; ?>
 
 <!--<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">-->
     <nav class="navbar navbar-inverse" role="navigation">
@@ -19,7 +17,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index">CMS Front</a>
+            <a class="navbar-brand" href="/PHP/Php_Beginner_to_master-U/cms/index.php">CMS Front</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,7 +48,7 @@
                             $registration_class = 'active';
                         }
 
-                        echo "<li class='$categoy_class'><a href='category.php?category={$cat_id}'>{$cat_title}</a></li>";
+                        echo "<li class='$categoy_class'><a href='/PHP/Php_Beginner_to_master-U/cms/category.php?category={$cat_id}'>{$cat_title}</a></li>";
                     }
                 ?>
 
@@ -61,13 +59,13 @@
                     </li>
 
                     <li>
-                        <a href="includes/logout.php">Admin</a>
+                        <a href="/PHP/Php_Beginner_to_master-U/cms/includes/logout.php">Admin</a>
                     </li>
 
                 <?php else: ?>
 
                     <li>
-                        <a href="login">Login</a>
+                        <a href="/PHP/Php_Beginner_to_master-U/cms/includes/login.php">Login</a>
                     </li>
 
                 <?php endif; ?>
@@ -75,7 +73,7 @@
 
 
                 <li class="<?php echo $registration_class; ?>">
-                    <a href="registration">Registration</a>
+                    <a href="/PHP/Php_Beginner_to_master-U/cms/registration.php">Registration</a>
                 </li>
 
                 <li ">
