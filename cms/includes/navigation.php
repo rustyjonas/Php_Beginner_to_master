@@ -59,7 +59,7 @@
                     </li>
 
                     <li>
-                        <a href="/PHP/Php_Beginner_to_master-U/cms/includes/logout.php">Admin</a>
+                        <a href="/PHP/Php_Beginner_to_master-U/cms/includes/logout.php">Logout</a>
                     </li>
 
                 <?php else: ?>

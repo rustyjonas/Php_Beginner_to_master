@@ -129,7 +129,9 @@ if(isset($_POST['checkBoxArray'])) {
 
                         <?php
 
-                        $query = "SELECT * FROM posts ORDER BY post_id DESC";
+                        $user = currentUser();
+
+                        $query = "SELECT * FROM posts WHERE post_user = '{$user}' ORDER BY post_id DESC";
 //
 //                        $query = "SELECT posts.post_id, posts.post_author, posts.post_user, posts.post_title, posts.post_category_id, posts.post_status,";
 //                        $query = "posts.post_image, posts.post_tags, posts.post_comment_count, posts.post_date, posts.post_views_count, categories.cat_id, ";

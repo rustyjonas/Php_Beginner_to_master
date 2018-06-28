@@ -1,5 +1,15 @@
 <?php
 
+
+function currentUser(){
+    if(isset($_SESSION['username'])){
+
+        return $_SESSION['username'];
+
+    }
+    return false;
+}
+
 function insert_categories(){
     global $connection;
         if(isset($_POST['submit'])){
@@ -97,7 +107,6 @@ function login_user($username, $password){
     $db_user_firstname = $row['user_firstname'];
     $db_user_lastname = $row['user_lastname'];
     $db_user_role = $row['user_role'];
-
 
     if(password_verify($password, $db_user_password)){
 
