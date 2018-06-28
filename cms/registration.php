@@ -6,7 +6,13 @@
 
 require 'vendor/autoload.php';
 
-$pusher = new Pusher\Pusher('b95d07e90fcf853e4e6f','bd3c60559f8c426bd89d','551458', 'us2');
+$options = array(
+        'cluster' => 'us2',
+        'encrypted' => true
+
+);
+
+$pusher = new Pusher\Pusher('b95d07e90fcf853e4e6f','bd3c60559f8c426bd89d','551458', $options);
 
 
 if(ifItIsMethod('post')) {

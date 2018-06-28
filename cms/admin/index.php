@@ -175,4 +175,29 @@
 
         <!-- /#page-wrapper -->
 
-<?php include "includes/admin_footer.php";?>
+<?php include "includes/admin_footer.php"; ?>
+
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+        <script>
+
+            $(document).ready(function(){
+
+                var pusher = new Pusher('b95d07e90fcf853e4e6f', {
+                   cluster: 'us2',
+                   encrypted: true
+               });
+
+               var notificationChannel = pusher.subscribe('notifications');
+
+                notificationChannel.bind('new_user', function(notification){
+
+                    var message = notification.message;
+
+                    console.log(message);
+
+                });
+
+            });
+
+        </script>
