@@ -177,7 +177,9 @@
 
 <?php include "includes/admin_footer.php"; ?>
 
-<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+        <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 
         <script>
 
@@ -190,9 +192,11 @@
 
                var notificationChannel = pusher.subscribe('notifications');
 
-                notificationChannel.bind('new_user', function(notification){
+                notificationChannel.bind('new_user', function(notifications){
 
-                    var message = notification.message;
+                    var message = notifications.message;
+
+                    toastr.success(`${message} just registered`);
 
                     console.log(message);
 
