@@ -96,7 +96,7 @@
                         <hr>
 
                         <a href="post.php?p_id=<?php echo $post_id; ?>">
-                            <img width="100" class="img-responsive" src="admin/image/<?php echo $post_image; ?>" alt="">
+                            <img width="100" class="img-responsive" src="admin/image/<?php echo imagePlaceholder($post_image); ?>" alt="">
                         </a>
 
                         <hr>

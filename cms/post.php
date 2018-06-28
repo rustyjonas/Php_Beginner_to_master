@@ -72,14 +72,12 @@
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> <?php echo $post_date; ?></p>
                 <hr>
-                <img width="100" class="img-responsive" src="admin/image/<?php echo $post_image; ?>" alt="">
+                <img width="100" class="img-responsive" src="admin/image/<?php echo imagePlaceholder($post_image); ?>" alt="">
                 <hr>
                 <p><?php echo $post_content; ?></p>
                 <hr>
 
             <?php }
-
-
 
             ?>
 

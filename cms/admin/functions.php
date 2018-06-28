@@ -1,5 +1,14 @@
 <?php
 
+function imagePlaceholder($image=''){
+    if(!$image){
+        return 'Picture1.jpg';
+    }else {
+        return $image;
+    }
+
+}
+
 
 function currentUser(){
     if(isset($_SESSION['username'])){
